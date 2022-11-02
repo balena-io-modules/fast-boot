@@ -1,0 +1,26 @@
+- commits:
+    - subject: Update deps/tests, move to Flowzone
+      hash: 8998293b64dec0dfa86c2b20603052441a7c9663
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Josh Bowling <josh@monarci.com>
+        signed-off-by: Josh Bowling <josh@monarci.com>
+      author: Josh Bowling
+      nested: []
+  version: 1.1.1
+  title: ""
+  date: 2022-11-02T03:42:50.955Z
+- version: 1.1.0
+  date: 2020-06-24T14:07:07Z
+  commits:
+    - hash: dc1333d9032771ebbddfa41d21274836cdf2d569
+      author: Pagan Gazzard
+      footers:
+        change-type: minor
+      subject: Add a cacheScope option to specify an alternate cache scope
+      body: |-
+        This is useful when combining fast-boot2 with a globally installed
+        module, as in that case you are likely to want the scope to be relative
+        to the install directory rather than the cwd

@@ -4,6 +4,10 @@
 
 * Add a cacheScope option to specify an alternate cache scope [Pagan Gazzard]
 
+## 1.1.1 - 2022-11-02
+
+* Update deps/tests, move to Flowzone [Josh Bowling]
+
 ## 1.0.9 - 2018-12-17
 
 * Add `saveTimeout` for customising the timeout, and drop the default to 1s [Pagan Gazzard]
