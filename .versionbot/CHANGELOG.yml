@@ -1,4 +1,18 @@
 - commits:
+    - subject: "Docs: Fix table in README"
+      hash: 6bb24403b9c3f100f7819b20a08a309b644af35d
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Josh Bowling <josh@monarci.com>
+        signed-off-by: Josh Bowling <josh@monarci.com>
+      author: Josh Bowling
+      nested: []
+  version: 1.1.2
+  title: ""
+  date: 2022-11-02T03:47:59.010Z
+- commits:
     - subject: Update deps/tests, move to Flowzone
       hash: 8998293b64dec0dfa86c2b20603052441a7c9663
       body: ""

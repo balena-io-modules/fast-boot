@@ -4,6 +4,10 @@
 
 * Add a cacheScope option to specify an alternate cache scope [Pagan Gazzard]
 
+## 1.1.2 - 2022-11-02
+
+* Docs: Fix table in README [Josh Bowling]
+
 ## 1.1.1 - 2022-11-02
 
 * Update deps/tests, move to Flowzone [Josh Bowling]
