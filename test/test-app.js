@@ -1,87 +1,86 @@
-var start = process.hrtime();
-var fastBoot = require("../");
-var fs = require('fs');
+const start = process.hrtime();
+const fastBoot = require('../');
+const fs = require('fs');
 
-var version = "0.0.1";
-var command;
-if (process.argv.length > 2)
-  version = process.argv[2];
+let version = '0.0.1';
+let command;
+if (process.argv.length > 2) {
+	version = process.argv[2];
+}
 
-if (process.argv.length > 3)
-  command = process.argv[3];
+if (process.argv.length > 3) {
+	command = process.argv[3];
+}
 
-var statusLog = [];
+const statusLog = [];
 fastBoot.start({
-  cacheKiller: version,
-  statusCallback: function (message) {
-    statusLog.push(message);
-  }
+	cacheKiller: version,
+	statusCallback: function (message) {
+		statusLog.push(message);
+	},
 });
 
-var orig = {};
+const orig = {};
 
 orig.readFileSync = fs.readFileSync;
-var readFileSyncCount = 0;
-fs.readFileSync = function(path, opts) {
-  readFileSyncCount++;
-  return orig.readFileSync(path, opts);
+let readFileSyncCount = 0;
+fs.readFileSync = function (path, opts) {
+	readFileSyncCount++;
+	return orig.readFileSync(path, opts);
 };
 
 orig.existsSync = fs.existsSync;
-var existsSyncCount = 0;
-fs.existsSync = function(path) {
-  existsSyncCount++;
-  return orig.existsSync(path);
+let existsSyncCount = 0;
+fs.existsSync = function (path) {
+	existsSyncCount++;
+	return orig.existsSync(path);
 };
 
-if (command === "loadExpress") {
-  var express = require('express')();
-  fastBoot.saveCache(sendStatus);
-}
-else if (command === "loadExpressAndProjectModule"){
-  var testModule = require("./test-module");
-  var express = require('express')();
-  fastBoot.saveCache(sendStatus);
-}
-else if (command === "loadExpressAndSaveStartup"){
-  var express = require('express')();
-  fastBoot.saveStartupList(function() {
-    fastBoot.saveCache(sendStatus);
-  });
-}
-else if (command === "loadExpressAndBrowserify"){
-  var express = require('express')();
-  var browserify = require('browserify');
-  fastBoot.saveCache(sendStatus);
+if (command === 'loadExpress') {
+	require('express')();
+	fastBoot.saveCache(sendStatus);
+} else if (command === 'loadExpressAndProjectModule') {
+	require('./test-module');
+	require('express')();
+	fastBoot.saveCache(sendStatus);
+} else if (command === 'loadExpressAndSaveStartup') {
+	require('express')();
+	fastBoot.saveStartupList(function () {
+		fastBoot.saveCache(sendStatus);
+	});
+} else if (command === 'loadExpressAndBrowserify') {
+	require('express')();
+	require('browserify');
+	fastBoot.saveCache(sendStatus);
 }
 
 function sendStatus(err) {
+	if (err) {
+		console.log(err);
+	}
 
-  if (err)
-    console.log(err);
-
-  var stats = fastBoot.stats();
-  if (process.send)
-    process.send({
-      readFileSyncCount: readFileSyncCount,
-      existsSyncCount: existsSyncCount,
-      loadingTime: process.hrtime(start),
-      cacheHit: stats.cacheHit,
-      cacheMiss: stats.cacheMiss,
-      notCached: stats.notCached,
-      loadingStats: stats.loading,
-      statusLog: statusLog
-    });
-  else {
-    console.log({
-      readFileSyncCount: readFileSyncCount,
-      existsSyncCount: existsSyncCount,
-      loadingTime: process.hrtime(start),
-      cacheHit: stats.cacheHit,
-      cacheMiss: stats.cacheMiss,
-      notCached: stats.notCached,
-      loadingStats: stats.loading,
-      statusLog: statusLog
-    })
-  }
+	const stats = fastBoot.stats();
+	if (process.send) {
+		process.send({
+			readFileSyncCount: readFileSyncCount,
+			existsSyncCount: existsSyncCount,
+			loadingTime: process.hrtime(start),
+			cacheHit: stats.cacheHit,
+			cacheMiss: stats.cacheMiss,
+			notCached: stats.notCached,
+			loadingStats: stats.loading,
+			statusLog: statusLog,
+		});
+	} else {
+		console.log({
+			readFileSyncCount: readFileSyncCount,
+			existsSyncCount: existsSyncCount,
+			loadingTime: process.hrtime(start),
+			cacheHit: stats.cacheHit,
+			cacheMiss: stats.cacheMiss,
+			notCached: stats.notCached,
+			loadingStats: stats.loading,
+			statusLog: statusLog,
+		});
+	}
 }
