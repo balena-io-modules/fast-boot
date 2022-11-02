@@ -20,13 +20,6 @@ fastBoot.start({
 
 var orig = {};
 
-orig.statSync = fs.statSync;
-var statSyncCount = 0;
-fs.statSync = function(path) {
-  statSyncCount++;
-  return orig.statSync(path);
-};
-
 orig.readFileSync = fs.readFileSync;
 var readFileSyncCount = 0;
 fs.readFileSync = function(path, opts) {
@@ -70,7 +63,6 @@ function sendStatus(err) {
   var stats = fastBoot.stats();
   if (process.send)
     process.send({
-      statSyncCount: statSyncCount,
       readFileSyncCount: readFileSyncCount,
       existsSyncCount: existsSyncCount,
       loadingTime: process.hrtime(start),
@@ -82,7 +74,6 @@ function sendStatus(err) {
     });
   else {
     console.log({
-      statSyncCount: statSyncCount,
       readFileSyncCount: readFileSyncCount,
       existsSyncCount: existsSyncCount,
       loadingTime: process.hrtime(start),

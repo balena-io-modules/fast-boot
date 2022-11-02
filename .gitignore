@@ -1,2 +1,7 @@
 node_modules
 *.iml
+
+# Package lock files should not be generated (see .npmrc).
+# This is just a fail-safe to ensure that if they are generated
+# they are still ignored and not committed.
+package-lock.json
