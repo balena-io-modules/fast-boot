@@ -49,6 +49,17 @@ function toAbsolutePath(filename) {
 }
 
 function resolveFilenameOptimized(request, parent) {
+	// parent can be undefined in ESM contexts because of how ESM module resolution happens
+	// When CJS modules are loaded:
+	// - request will be the module path
+	// - parent is the module object of the calling module
+	// When ESM modules are loaded however, it uses an entire different resolution mechanism,
+	// It goes to the ESM loader and not directly to Module._resolveFilename
+	// when ESM code eventually needs to load CJS, it will call Module._resolveFilename but without parent context
+	if (parent == null) {
+		// On ESM context, fallback to original resolution
+		return _resolveFilename.apply(Module, arguments);
+	}
 	const key = toCanonicalPath(parent.id) + ':' + request;
 	let canonical = filenameLookup[key];
 	let filename = undefined;
