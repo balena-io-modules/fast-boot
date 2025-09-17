@@ -1,6 +1,6 @@
 {
   "name": "fast-boot2",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Speeding up node boot time by caching for filesystem location of node modules",
   "main": "index.js",
   "homepage": "https://github.com/balena-io-modules/fast-boot",
@@ -44,6 +44,6 @@
     "pre-commit": "npx lint-staged"
   },
   "versionist": {
-    "publishedAt": "2022-11-02T04:21:19.123Z"
+    "publishedAt": "2025-09-17T13:04:06.507Z"
   }
 }

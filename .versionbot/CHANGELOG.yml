@@ -1,4 +1,16 @@
 - commits:
+    - subject: Allow resolving filename without parent for ESM compability
+      hash: 2ce19c14131eed11ecb5a85170d9d60b6728af14
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Otavio Jacobi
+      nested: []
+  version: 1.1.4
+  title: ""
+  date: 2025-09-17T13:04:06.461Z
+- commits:
     - subject: "Dev: Use @balena/lint"
       hash: 7794c8f0c061c7b7cb099f559b836ebc24096554
       body: ""

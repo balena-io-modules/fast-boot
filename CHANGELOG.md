@@ -4,6 +4,10 @@
 
 * Add a cacheScope option to specify an alternate cache scope [Pagan Gazzard]
 
+## 1.1.4 - 2025-09-17
+
+* Allow resolving filename without parent for ESM compability [Otavio Jacobi]
+
 ## 1.1.3 - 2022-11-02
 
 * Dev: Use @balena/lint [Josh Bowling]
