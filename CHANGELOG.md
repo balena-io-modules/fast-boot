@@ -4,6 +4,10 @@
 
 * Add a cacheScope option to specify an alternate cache scope [Pagan Gazzard]
 
+## 1.1.5 - 2026-02-19
+
+* Add id-token: write permission for NPM OIDC publishing [Kyle Harding]
+
 ## 1.1.4 - 2025-09-17
 
 * Allow resolving filename without parent for ESM compability [Otavio Jacobi]

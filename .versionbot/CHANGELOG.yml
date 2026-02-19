@@ -1,4 +1,18 @@
 - commits:
+    - subject: "Add id-token: write permission for NPM OIDC publishing"
+      hash: c10b721aee86deaf13f2f09fa6064d6f7c91a950
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 1.1.5
+  title: ""
+  date: 2026-02-19T01:58:22.933Z
+- commits:
     - subject: Allow resolving filename without parent for ESM compability
       hash: 2ce19c14131eed11ecb5a85170d9d60b6728af14
       body: ""
